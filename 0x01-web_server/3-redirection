@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Script that configures a new Ubuntu machine to install
+# nginx using listening port 80 that returns a page that
+# contains the string `Hello World` when querying at its
+# root `/`.
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo ufw allow 'Nginx HTTP'
+sudo /etc/init.d/nginx restart
+
+sudo rm /var/www/html/*.html
+sudo echo "Hello World\n" | sudo tee /var/www/html/index.html
+
+old_loc="location / {"
+new_loc="location /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}\n\nlocation / {\n"
+sudo sed -i 's/$old_loc/$new_loc/g' /etc/nginx/sites-available/default
