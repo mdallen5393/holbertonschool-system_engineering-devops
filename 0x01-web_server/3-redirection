@@ -6,7 +6,6 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 sudo ufw allow 'Nginx HTTP'
-sudo /etc/init.d/nginx restart
 
 sudo rm /var/www/html/*.html
 sudo echo "Hello World\n" | sudo tee /var/www/html/index.html
@@ -15,3 +14,5 @@ yt="https://www.youtube.com/watch?v=QH2-TGUlwu4"
 old_loc="\tlocation / {"
 new_loc="\tlocation /redirect_me {\n\t\treturn 301 $yt;\n\t}\n\n\tlocation / {"
 sudo sed -i "s|$old_loc|$new_loc|" /etc/nginx/sites-available/default
+
+sudo /etc/init.d/nginx restart
