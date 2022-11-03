@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Script to transfer a file from our client to a
+# server.
+# Arguments:
+#   $1: PATH_TO_FILE to be transferred
+#   $2: IP of server we want to transfer to
+#   $3: USERNAME `scp` connects with
+#   $4: PATH_TO_SSH_KEY - private key used by `scp`
+scp  -i "$4" "$1" "$3"@"$2":~/
