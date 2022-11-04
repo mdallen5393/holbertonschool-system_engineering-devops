@@ -10,9 +10,9 @@ sudo ufw allow 'Nginx HTTP'
 sudo rm /var/www/html/*.html
 sudo echo "Hello World" | sudo tee /var/www/html/index.html
 
-yt="//www.youtube.com/watch?v=QH2-TGUlwu4"
+yt="https://www.youtube.com/watch?v=QH2-TGUlwu4"
 old_loc="^\tlocation / {"
-new_loc="\tlocation /redirect_me {\n\t\treturn 301 \$scheme:$yt;\n\t}\n\n\tlocation / {"
+new_loc="\tlocation /redirect_me {\n\t\treturn 301 $yt;\n\t}\n\n\tlocation / {"
 sudo sed -i "s|$old_loc|$new_loc|" /etc/nginx/sites-available/default
 
 sudo /etc/init.d/nginx restart
