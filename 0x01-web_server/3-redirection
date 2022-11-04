@@ -11,8 +11,8 @@ sudo rm /var/www/html/*.html
 sudo echo "Hello World" | sudo tee /var/www/html/index.html
 
 yt="https://www.youtube.com/watch?v=QH2-TGUlwu4"
-old_loc="^        location / {"
-new_loc="        location /redirect_me {\n                return 301 $yt;\n        }\n\n        location / {"
-sudo sed -i "s|$old_loc|$new_loc|" /etc/nginx/sites-available/default
+old_loc="location / {"
+new_loc="location /redirect_me {\n\t\treturn 301 $yt;\n\t}\n\n\tlocation / {"
+sudo sed -i "s|$old_loc|$new_loc|1" /etc/nginx/sites-available/default
 
 sudo /etc/init.d/nginx restart
