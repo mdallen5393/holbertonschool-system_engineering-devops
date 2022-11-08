@@ -1,9 +1,14 @@
+#!/usr/bin/env bash
+# Installs and sets up ufw (firewall), allowing
+# incoming traffic through only certain ports.
 sudo apt-get update -y
-sudo apt-get upgrade -y
 sudo apt install ufw
+
 sudo ufw default allow outgoing
 sudo ufw default deny incoming
+
 sudo ufw allow 22/tcp
 sudo ufw allow 442
 sudo ufw allow 80
+
 sudo ufw enable -y
