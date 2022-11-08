@@ -10,7 +10,7 @@ echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
 # Add to /etc/haproxy/haproxy.conf
 fe="frontend main\n\tbind *:80\n\tmode http\n\tdefault_backend web_servers\n\n"
-be="backend web_servers\n\tmode *:80\n\tbalance roundrobin\n\toption forwardfor\n\tserver 4928-web-01 34.230.11.150:80 check\n\tserver 4928-web-02 3.85.44.226:80 check\n"
+be="backend web_servers\n\tbalance roundrobin\n\toption forwardfor\n\tserver 4928-web-01 34.230.11.150:80 check\n\tserver 4928-web-02 3.85.44.226:80 check\n"
 echo -e "\n\n$fe$be" | sudo tee -a /etc/haproxy/haproxy.cfg
 
 sudo service haproxy start
