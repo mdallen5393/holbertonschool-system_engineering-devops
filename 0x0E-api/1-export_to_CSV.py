@@ -35,7 +35,7 @@ if __name__ == "__main__":
     todo_info = json.loads(todo_response.text)
 
     task_list = []
-    username = user_info['name']
+    username = user_info['username']
     for task in todo_info:
         task_dict = {}
         task_dict['USER_ID'] = user_id
