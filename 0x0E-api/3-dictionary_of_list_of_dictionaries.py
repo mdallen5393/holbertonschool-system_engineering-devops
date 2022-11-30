@@ -12,6 +12,7 @@ if __name__ == "__main__":
     user_response = requests.get(url)
     user_info = json.loads(user_response.text)
 
+    # create dictionary containing users and their associated tasks
     tasks = {}
     for user in user_info:
         user_id = user['id']
@@ -34,9 +35,11 @@ if __name__ == "__main__":
             # add task dictionary to the list of tasks
             tasks_list.append(task_dict)
 
-        # add list of tasks to dictionary
+        # add list of tasks to dictionary for that specific user
         tasks[user_id] = tasks_list
 
+    # print json string to file; note: could have used dump to print
+    # directly to file.
     with open('todo_all_employees.json', 'w', encoding='UTF8',
               newline='') as f:
         f.write(json.dumps(tasks))
