@@ -28,4 +28,5 @@ print("Employee {} is done with tasks({}/{}):"
       .format(employee_name, num_done, num_tasks))
 
 for task in todo_info:
-    print("\t {}".format(task['title']))
+    if task['completed']:
+        print("\t {}".format(task['title']))
