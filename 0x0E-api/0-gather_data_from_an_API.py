@@ -28,4 +28,4 @@ print("Employee {} is done with tasks({}/{}):"
       .format(employee_name, num_done, num_tasks))
 
 for task in todo_info:
-    print(f"\t {task['title']}")
+    print("\t {}".format(task['title']))
