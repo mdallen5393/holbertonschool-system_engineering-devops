@@ -5,7 +5,6 @@ given an employee id to a CSV file named `USER_ID.csv`.
 """
 import json
 import requests
-import sys
 
 
 if __name__ == "__main__":
@@ -13,6 +12,7 @@ if __name__ == "__main__":
     user_response = requests.get(url)
     user_info = json.loads(user_response.text)
 
+    tasks = {}
     for user in user_info:
         user_id = user['id']
 
@@ -23,8 +23,6 @@ if __name__ == "__main__":
 
         # create Dictionary objects from response objects
         todo_info = json.loads(todo_response.text)
-
-        tasks = {}
 
         tasks_list = []
         for task in todo_info:
