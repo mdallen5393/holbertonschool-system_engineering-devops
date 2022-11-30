@@ -12,11 +12,11 @@ if __name__ == "__main__":
     userId = sys.argv[1]
 
     # create Response object for specific user and that user's tasks
-    user_response = requests.get('https://jsonplaceholder.typicode.com/users/{}'
-                                .format(userId))
+    user_response = requests.get('https://jsonplaceholder.typicode.com\
+                                 /users/{}'.format(userId))
     todo_response = requests \
         .get('https://jsonplaceholder.typicode.com/todos/?userId={}'
-            .format(userId))
+             .format(userId))
 
     # create Dictionary objects from response objects
     user_info = json.loads(user_response.text)
@@ -32,7 +32,7 @@ if __name__ == "__main__":
             num_done += 1
 
     print("Employee {} is done with tasks({}/{}):"
-        .format(employee_name, num_done, num_tasks))
+          .format(employee_name, num_done, num_tasks))
 
     for task in todo_info:
         if task['completed']:
