@@ -9,15 +9,6 @@ import sys
 import csv
 
 
-def writeCSV(list_to_write, id):
-    """Writes a list of dictionaries to as CSV file."""
-    fieldnames = ['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE']
-    with open('./{}.csv'.format(id), 'w', encoding='UTF8', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames,
-                                quoting=csv.QUOTE_ALL, quotechar='"')
-        writer.writerows(list_to_write)
-
-
 if __name__ == "__main__":
     num_done, num_tasks = 0, 0
     user_id = sys.argv[1]
@@ -44,4 +35,9 @@ if __name__ == "__main__":
         task_dict['TASK_TITLE'] = task['title']
         task_list.append(task_dict)
 
-    writeCSV(task_list, user_id)
+    fieldnames = ['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE']
+    with open('./{}.csv'.format(user_id), 'w', encoding='UTF8',
+              newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames,
+                                quoting=csv.QUOTE_ALL, quotechar='"')
+        writer.writerows(task_list)
