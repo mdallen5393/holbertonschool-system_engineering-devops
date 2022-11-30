@@ -3,10 +3,10 @@
 Script that exports information about an employees TODO list progress
 given an employee id to a CSV file named `USER_ID.csv`.
 """
+import csv
 import json
 import requests
 import sys
-import csv
 
 
 if __name__ == "__main__":
