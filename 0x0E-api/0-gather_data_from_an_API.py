@@ -17,9 +17,8 @@ if __name__ == "__main__":
 
     url = 'https://jsonplaceholder.typicode.com/todos/?userId={}'\
         .format(userId)
+    todo_response = requests.get(url)
 
-    todo_response = requests \
-        .get(url)
     # create Dictionary objects from response objects
     user_info = json.loads(user_response.text)
     todo_info = json.loads(todo_response.text)
